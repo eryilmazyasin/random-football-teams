@@ -1,11 +1,13 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from '<src>/styles/Home.module.css'
+import Head from "next/head";
+import Image from "next/image";
+import { Inter } from "next/font/google";
+import styles from "<src>/styles/Home.module.css";
+import { useState } from "react";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const [count, setCount] = useState(0);
   return (
     <>
       <Head>
@@ -18,6 +20,7 @@ export default function Home() {
         <div className={styles.description}>
           <p>
             Get started by editing&nbsp;
+            {count}
             <code className={styles.code}>src/pages/index.tsx</code>
           </p>
           <div>
@@ -26,7 +29,7 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              By{' '}
+              By{" "}
               <Image
                 src="/vercel.svg"
                 alt="Vercel Logo"
@@ -119,5 +122,5 @@ export default function Home() {
         </div>
       </main>
     </>
-  )
+  );
 }
