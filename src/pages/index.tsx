@@ -2,13 +2,17 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "<src>/styles/Home.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Container, Grid } from "@mui/material";
 import classes from "<src>/styles/index.styles";
 import SelectInput from "<src>/components/SelectInput";
+import app from "next/app";
+import handler from "./api/hello";
+import data from "<src>/data/teams.json";
 
 export default function Home() {
   const [count, setCount] = useState(0);
+
   return (
     <>
       <Head>
@@ -27,7 +31,7 @@ export default function Home() {
           >
             <h1 className="app-title">Random Football Teams</h1>
             <div>
-              <SelectInput />
+              <SelectInput data={data} />
             </div>
           </Grid>
         </Container>
