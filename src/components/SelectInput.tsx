@@ -4,18 +4,37 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import ILigues from "<src>/interfaces/ILigues";
+import ILigue from "<src>/interfaces/ILigue";
 
 interface IProps {
-  data: ILigues;
+  data: ILigue[];
 }
 
 export default function BasicSelect(props: IProps) {
   const { data } = props;
-  const [ligue, setLigue] = React.useState("All Ligues");
+  const defaultSelectedValue = "All Ligues";
+  const [ligue, setLigue] = React.useState(defaultSelectedValue);
 
   const handleChange = (event: SelectChangeEvent) => {
     setLigue(event.target.value as string);
+  };
+
+  console.log({ data });
+
+  const renderMenuItems = () => {
+    if (!data) return;
+
+    const ligues = data.map((ligue) => (
+      <MenuItem key={ligue.title} value={ligue.title}>
+        {ligue.title}
+      </MenuItem>
+    ));
+
+    ligues.unshift(
+      <MenuItem value={defaultSelectedValue}>{defaultSelectedValue}</MenuItem>
+    );
+
+    return ligues;
   };
 
   return (
@@ -30,10 +49,7 @@ export default function BasicSelect(props: IProps) {
           label="Ligue"
           onChange={handleChange}
         >
-          {/* <MenuItem defaultChecked={true}>All Ligues</MenuItem> */}
-          <MenuItem value={"All Ligues"}>All Ligues</MenuItem>
-          <MenuItem value={"Twenty"}>Twenty</MenuItem>
-          <MenuItem value={"Thirty"}>Thirty</MenuItem>
+          {renderMenuItems()}
         </Select>
       </FormControl>
     </Box>

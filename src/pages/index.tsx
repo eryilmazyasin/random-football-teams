@@ -13,6 +13,8 @@ import data from "<src>/data/teams.json";
 export default function Home() {
   const [count, setCount] = useState(0);
 
+  console.log({ data });
+
   return (
     <>
       <Head>
