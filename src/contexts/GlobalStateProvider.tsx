@@ -1,22 +1,30 @@
+import { ILigues } from "<src>/interfaces/ILigue";
 import React, { createContext, useState } from "react";
 
 interface IGlobalState {
-  ligueFilter: any;
+  ligueFilter: ILigues;
   setLigueFilter: any;
+  teamPowerFilter: number | string;
+  setTeamPowerFilter: any;
 }
 
-const defaultLiguesValue = "All Ligues";
+const allFilter = "All";
 
 const GlobalState = createContext<IGlobalState>(null);
 
 const GlobalStateProvider = ({ children }) => {
-  const [ligueFilter, setLigueFilter] = useState(defaultLiguesValue);
+  const [ligueFilter, setLigueFilter] = useState<ILigues>(allFilter);
+  const [teamPowerFilter, setTeamPowerFilter] = useState<number | string>(
+    allFilter
+  );
 
   return (
     <GlobalState.Provider
       value={{
         ligueFilter,
+        teamPowerFilter,
         setLigueFilter,
+        setTeamPowerFilter,
       }}
     >
       {children}

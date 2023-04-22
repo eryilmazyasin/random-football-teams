@@ -11,45 +11,35 @@ interface IProps {
   data: ILigue[];
 }
 
-export default function LiguesSelect(props: IProps) {
+export default function TeamPowerSelect(props: IProps) {
   const { data } = props;
-  const { ligueFilter, setLigueFilter } = useGlobalState();
+  const { ligueFilter, teamPowerFilter, setTeamPowerFilter } = useGlobalState();
 
   const handleChange = (event: SelectChangeEvent) => {
-    setLigueFilter(event.target.value as string);
+    setTeamPowerFilter(event.target.value);
   };
 
   const renderMenuItems = () => {
     if (!data) return;
 
-    const ligues = data.map((ligue) => (
-      <MenuItem key={ligue.title} value={ligue.title}>
-        {ligue.title}
+    const powers = ["All", "0 - 50", "50 - 70", "70 - 80", "80 - 100"];
+
+    return powers.map((power) => (
+      <MenuItem key={power} value={power}>
+        {power}
       </MenuItem>
     ));
-
-    const defaultSelectedValue = "All";
-
-    ligues.unshift(
-      <MenuItem key="allLigues" value={defaultSelectedValue}>
-        {defaultSelectedValue}
-      </MenuItem>
-    );
-
-    return ligues;
   };
-
-  // TODO: Çoklu seçim yapılabilmeli
 
   return (
     <Box sx={{ minWidth: 300 }}>
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Ligues</InputLabel>
+        <InputLabel id="demo-simple-select-label">Power</InputLabel>
         <Select
-          labelId="ligue-select-label"
-          id="ligue-select"
-          value={ligueFilter}
-          label="Ligue"
+          labelId="power-select-label"
+          id="power-select"
+          value={String(teamPowerFilter)}
+          label="Power"
           onChange={handleChange}
         >
           {renderMenuItems()}

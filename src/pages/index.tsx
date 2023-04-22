@@ -9,6 +9,7 @@ import LiguesSelect from "<src>/components/LiguesSelect";
 import app from "next/app";
 import handler from "./api/hello";
 import data from "<src>/data/teams.json";
+import TeamPowerSelect from "<src>/components/TeamPowerSelect";
 
 export default function Home() {
   const [count, setCount] = useState(0);
@@ -34,6 +35,7 @@ export default function Home() {
             <h1 className="app-title">Random Football Teams</h1>
             <div>
               <LiguesSelect data={data} />
+              <TeamPowerSelect data={data} />
             </div>
           </Grid>
         </Container>
