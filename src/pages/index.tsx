@@ -5,7 +5,7 @@ import styles from "<src>/styles/Home.module.css";
 import { useEffect, useState } from "react";
 import { Container, Grid } from "@mui/material";
 import classes from "<src>/styles/index.styles";
-import SelectInput from "<src>/components/SelectInput";
+import LiguesSelect from "<src>/components/LiguesSelect";
 import app from "next/app";
 import handler from "./api/hello";
 import data from "<src>/data/teams.json";
@@ -33,7 +33,7 @@ export default function Home() {
           >
             <h1 className="app-title">Random Football Teams</h1>
             <div>
-              <SelectInput data={data} />
+              <LiguesSelect data={data} />
             </div>
           </Grid>
         </Container>

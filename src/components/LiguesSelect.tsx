@@ -1,10 +1,11 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import ILigue from "<src>/interfaces/ILigue";
+import { useGlobalState } from "<src>/contexts/GlobalStateProvider";
 
 interface IProps {
   data: ILigue[];
@@ -13,13 +14,13 @@ interface IProps {
 export default function BasicSelect(props: IProps) {
   const { data } = props;
   const defaultSelectedValue = "All Ligues";
-  const [ligue, setLigue] = React.useState(defaultSelectedValue);
+  const { ligueFilter, setLigueFilter } = useGlobalState();
 
   const handleChange = (event: SelectChangeEvent) => {
-    setLigue(event.target.value as string);
+    setLigueFilter(event.target.value as string);
   };
 
-  console.log({ data });
+  console.log({ data, ligueFilter });
 
   const renderMenuItems = () => {
     if (!data) return;
@@ -31,7 +32,9 @@ export default function BasicSelect(props: IProps) {
     ));
 
     ligues.unshift(
-      <MenuItem value={defaultSelectedValue}>{defaultSelectedValue}</MenuItem>
+      <MenuItem key="allLigues" value={defaultSelectedValue}>
+        {defaultSelectedValue}
+      </MenuItem>
     );
 
     return ligues;
@@ -44,7 +47,7 @@ export default function BasicSelect(props: IProps) {
         <Select
           labelId="ligue-select-label"
           id="ligue-select"
-          value={ligue}
+          value={ligueFilter}
           defaultValue="All Ligues"
           label="Ligue"
           onChange={handleChange}
