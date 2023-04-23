@@ -1,5 +1,5 @@
+import { up, down, Breakpoints } from "<src>/utils/mq";
 import { css } from "@emotion/css";
-const versusImage = require("../../public/versus.png");
 
 export default {
   main: css`
@@ -24,6 +24,10 @@ export default {
       gap: 25px;
       margin-top: 50px;
 
+      ${down(Breakpoints.md)} {
+        gap: 15px;
+      }
+
       img:not(.versus) {
         width: 150px;
         height: 150px;
@@ -31,11 +35,21 @@ export default {
         background: linear-gradient(45deg, #102f5a, transparent);
         border-radius: 50%;
         padding: 20px;
+
+        ${down(Breakpoints.md)} {
+          width: 120px;
+          height: 120px;
+        }
       }
 
       & .versus {
         width: 70px;
         height: 100px;
+
+        ${down(Breakpoints.md)} {
+          width: 60px;
+          height: 90px;
+        }
       }
     }
   `,
