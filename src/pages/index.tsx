@@ -11,6 +11,7 @@ import handler from "./api/hello";
 import data from "<src>/data/teams.json";
 import TeamPowerSelect from "<src>/components/TeamPowerSelect";
 import versusLogo from "../../public/versus.png";
+import GenerateButton from "<src>/components/GenerateButton";
 
 export default function Home() {
   const [count, setCount] = useState(0);
@@ -37,6 +38,9 @@ export default function Home() {
             <div className="selectBoxesWrapper">
               <LiguesSelect data={data} />
               <TeamPowerSelect data={data} />
+            </div>
+            <div>
+              <GenerateButton />
             </div>
             <div className="generateTeamsWrapper">
               <div>
