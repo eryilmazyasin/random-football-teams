@@ -10,6 +10,7 @@ import app from "next/app";
 import handler from "./api/hello";
 import data from "<src>/data/teams.json";
 import TeamPowerSelect from "<src>/components/TeamPowerSelect";
+import versusLogo from "../../public/versus.png";
 
 export default function Home() {
   const [count, setCount] = useState(0);
@@ -33,9 +34,22 @@ export default function Home() {
             alignItems={"center"}
           >
             <h1 className="app-title">Random Football Teams</h1>
-            <div>
+            <div className="selectBoxesWrapper">
               <LiguesSelect data={data} />
               <TeamPowerSelect data={data} />
+            </div>
+            <div className="generateTeamsWrapper">
+              <div>
+                <img src="https://upload.wikimedia.org/wikipedia/tr/5/52/FC.Porto.png" />
+              </div>
+              <Image
+                src={versusLogo}
+                alt="Picture of the author"
+                className="versus"
+              />
+              <div>
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/40/Boavista_F.C._logo.svg/1200px-Boavista_F.C._logo.svg.png" />
+              </div>
             </div>
           </Grid>
         </Container>
