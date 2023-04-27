@@ -4,11 +4,11 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import ILigue from "<src>/interfaces/ILigue";
+import ILeague from "<src>/interfaces/ILeague";
 import { useGlobalState } from "<src>/contexts/GlobalStateProvider";
 
 interface IProps {
-  data: ILigue[];
+  data: ILeague[];
 }
 
 export default function TeamPowerSelect(props: IProps) {

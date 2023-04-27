@@ -1,4 +1,4 @@
-export type ILigues =
+export type ILeagues =
   | "All"
   | "İngiltere Premier Ligue"
   | "İspanya La Liga"
@@ -8,7 +8,7 @@ export type ILigues =
   | "Portekiz Primeira Ligue";
 
 export default interface ILeague {
-  title: ILigues | any;
+  title: ILeagues | any;
   teams: {
     team_ligue: string;
     team_name: string;
