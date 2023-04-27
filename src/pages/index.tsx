@@ -7,15 +7,13 @@ import { Container, Grid } from "@mui/material";
 import classes from "<src>/styles/index.styles";
 import LiguesSelect from "<src>/components/LiguesSelect";
 import app from "next/app";
-import handler from "./api/hello";
+import handler from "./api/data";
 import data from "<src>/data/teams.json";
 import TeamPowerSelect from "<src>/components/TeamPowerSelect";
 import versusLogo from "../../public/versus.png";
 import GenerateButton from "<src>/components/GenerateButton";
 
 export default function Home() {
-  const [count, setCount] = useState(0);
-
   console.log({ data });
 
   return (
@@ -40,7 +38,7 @@ export default function Home() {
               <TeamPowerSelect data={data} />
             </div>
             <div>
-              <GenerateButton />
+              <GenerateButton data={data} />
             </div>
             <div className="generateTeamsWrapper">
               <div>
