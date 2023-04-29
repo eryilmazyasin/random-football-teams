@@ -6,6 +6,8 @@ import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import ILeague from "<src>/interfaces/ILeague";
 import { useGlobalState } from "<src>/contexts/GlobalStateProvider";
+import { Chip, OutlinedInput } from "@mui/material";
+import classes from "./LiguesSelect.styles";
 
 interface IProps {
   data: ILeague[];
@@ -14,9 +16,20 @@ interface IProps {
 export default function LiguesSelect(props: IProps) {
   const { data } = props;
   const { ligueFilter, setLigueFilter } = useGlobalState();
+  const [personName, setPersonName] = React.useState<string[]>([]);
 
-  const handleChange = (event: SelectChangeEvent) => {
-    setLigueFilter(event.target.value as string);
+  // const handleChange = (event: SelectChangeEvent) => {
+  //   setLigueFilter(event.target.value as string);
+  // };
+
+  const handleChange = (event: SelectChangeEvent<typeof personName>) => {
+    const {
+      target: { value },
+    } = event;
+    setLigueFilter(
+      // On autofill we get a stringified value.
+      typeof value === "string" ? value.split(",") : value
+    );
   };
 
   const renderMenuItems = () => {
@@ -41,8 +54,10 @@ export default function LiguesSelect(props: IProps) {
 
   // TODO: Çoklu seçim yapılabilmeli
 
+  console.log({ ligueFilter });
+
   return (
-    <Box sx={{ minWidth: 300 }}>
+    <Box sx={{ minWidth: 300 }} className={classes.liguesSelectWrapper}>
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">Ligues</InputLabel>
         <Select
@@ -51,6 +66,16 @@ export default function LiguesSelect(props: IProps) {
           value={ligueFilter}
           label="Ligue"
           onChange={handleChange}
+          // defaultValue={ligueFilter}
+          multiple={true}
+          input={<OutlinedInput id="select-multiple-chip" label="Chip" />}
+          renderValue={(selected) => (
+            <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
+              {selected.map((value) => (
+                <Chip key={value} label={value} />
+              ))}
+            </Box>
+          )}
         >
           {renderMenuItems()}
         </Select>

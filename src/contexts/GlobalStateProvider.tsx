@@ -2,7 +2,8 @@ import { ILeagues } from "<src>/interfaces/ILeague";
 import React, { createContext, useState } from "react";
 
 interface IGlobalState {
-  ligueFilter: ILeagues;
+  ligueFilter: ILeagues[];
+  // setLigueFilter: React.Dispatch<React.SetStateAction<ILeagues[]>>;
   setLigueFilter: any;
   teamPowerFilter: number | string;
   setTeamPowerFilter: any;
@@ -13,7 +14,8 @@ const allFilter = "All";
 const GlobalState = createContext<IGlobalState>(null);
 
 const GlobalStateProvider = ({ children }) => {
-  const [ligueFilter, setLigueFilter] = useState<ILeagues>(allFilter);
+  // const [ligueFilter, setLigueFilter] = useState<ILeagues>(allFilter);
+  const [ligueFilter, setLigueFilter] = useState<ILeagues[]>([]);
   const [teamPowerFilter, setTeamPowerFilter] = useState<number | string>(
     allFilter
   );

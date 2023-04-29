@@ -52,5 +52,9 @@ export default {
         }
       }
     }
+
+    & .MuiInputBase-root {
+      color: rgba(0, 0, 0, 0.6);
+    }
   `,
 };
