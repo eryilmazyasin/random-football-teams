@@ -11,7 +11,7 @@ interface IProps {
 }
 
 export default function GenerateButton({ data }: IProps) {
-  const { ligueFilter, teamPowerFilter, setTeamPowerFilter } = useGlobalState();
+  const { ligueFilter, teamPowerFilter, setFilterResults } = useGlobalState();
 
   const handleGenerateClick = () => {
     let teams = [];
@@ -56,6 +56,8 @@ export default function GenerateButton({ data }: IProps) {
         }
       });
     });
+
+    setFilterResults(teams);
   };
 
   return (

@@ -2,8 +2,13 @@ import React from "react";
 import Image from "next/image";
 import versusLogo from "../../public/versus.png";
 import classes from "./GeneratedTeamsResult.styles";
+import { useGlobalState } from "<src>/contexts/GlobalStateProvider";
 
 export default function GeneratedTeamsResult() {
+  const { filterResults } = useGlobalState();
+
+  console.log({ filterResults });
+
   return (
     <div className={classes.generateTeamsWrapper}>
       <div>
