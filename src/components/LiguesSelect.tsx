@@ -16,13 +16,8 @@ interface IProps {
 export default function LiguesSelect(props: IProps) {
   const { data } = props;
   const { ligueFilter, setLigueFilter } = useGlobalState();
-  const [personName, setPersonName] = React.useState<string[]>([]);
 
-  // const handleChange = (event: SelectChangeEvent) => {
-  //   setLigueFilter(event.target.value as string);
-  // };
-
-  const handleChange = (event: SelectChangeEvent<typeof personName>) => {
+  const handleChange = (event: SelectChangeEvent<typeof ligueFilter>) => {
     const {
       target: { value },
     } = event;

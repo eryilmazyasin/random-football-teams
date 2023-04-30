@@ -10,7 +10,7 @@ export type ILeagues =
 export type ITeamPower = "All" | "0 - 50" | "50 - 70" | "70 - 80" | "80 - 100";
 
 export default interface ILeague {
-  title: ILeagues;
+  title: ILeagues | string;
   teams: {
     team_ligue: string;
     team_name: string;
