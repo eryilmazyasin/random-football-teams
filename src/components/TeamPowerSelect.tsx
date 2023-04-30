@@ -4,7 +4,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import ILeague from "<src>/interfaces/ILeague";
+import ILeague, { ITeamPower } from "<src>/interfaces/ILeague";
 import { useGlobalState } from "<src>/contexts/GlobalStateProvider";
 
 interface IProps {
@@ -22,7 +22,13 @@ export default function TeamPowerSelect(props: IProps) {
   const renderMenuItems = () => {
     if (!data) return;
 
-    const powers = ["All", "0 - 50", "50 - 70", "70 - 80", "80 - 100"];
+    const powers: ITeamPower[] = [
+      "All",
+      "0 - 50",
+      "50 - 70",
+      "70 - 80",
+      "80 - 100",
+    ];
 
     return powers.map((power) => (
       <MenuItem key={power} value={power}>
