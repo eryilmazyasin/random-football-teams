@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Image from "next/image";
+
 import { Inter } from "next/font/google";
 import styles from "<src>/styles/Home.module.css";
 import { useEffect, useState } from "react";
@@ -10,8 +10,8 @@ import app from "next/app";
 import handler from "./api/data";
 import data from "<src>/data/teams.json";
 import TeamPowerSelect from "<src>/components/TeamPowerSelect";
-import versusLogo from "../../public/versus.png";
 import GenerateButton from "<src>/components/GenerateButton";
+import GeneratedTeamsResult from "<src>/components/GeneratedTeamsResult";
 
 export default function Home() {
   console.log({ data });
@@ -40,19 +40,7 @@ export default function Home() {
             <div>
               <GenerateButton data={data} />
             </div>
-            <div className="generateTeamsWrapper">
-              <div>
-                <img src="https://upload.wikimedia.org/wikipedia/tr/5/52/FC.Porto.png" />
-              </div>
-              <Image
-                src={versusLogo}
-                alt="Picture of the author"
-                className="versus"
-              />
-              <div>
-                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/40/Boavista_F.C._logo.svg/1200px-Boavista_F.C._logo.svg.png" />
-              </div>
-            </div>
+            <GeneratedTeamsResult />
           </Grid>
         </Container>
       </main>
