@@ -41,6 +41,8 @@ export default function GeneratedTeamsResult(props: IProps) {
     );
   }, [filterResults]);
 
+  //TODO:Performans sorunları, filterResults state ve değişken isimleri, ui görsel efekt iyileştirmeleri
+
   return (
     <>
       <div>
