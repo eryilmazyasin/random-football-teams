@@ -13,17 +13,39 @@ export default {
       gap: 15px;
     }
 
+    & .logoAndName {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 20px;
+      text-align: center;
+      max-width: 170px;
+      max-height: 170px;
+
+      & .logo {
+        background: linear-gradient(45deg, #102f5a, transparent);
+        border-radius: 50%;
+        max-width: 170px;
+        max-height: 170px;
+        min-width: 170px;
+        min-height: 170px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
     img:not(.versus) {
-      width: 150px;
-      height: 150px;
+      max-width: 150px;
+      max-height: 150px;
       object-fit: contain;
-      background: linear-gradient(45deg, #102f5a, transparent);
-      border-radius: 50%;
       padding: 20px;
 
       ${down(Breakpoints.md)} {
-        width: 120px;
-        height: 120px;
+        max-width: 120px;
+        max-height: 120px;
       }
     }
 

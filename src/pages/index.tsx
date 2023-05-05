@@ -37,10 +37,7 @@ export default function Home() {
               <LiguesSelect data={data} />
               <TeamPowerSelect data={data} />
             </div>
-            <div>
-              <GenerateButton data={data} />
-            </div>
-            <GeneratedTeamsResult />
+            <GeneratedTeamsResult data={data} />
           </Grid>
         </Container>
       </main>

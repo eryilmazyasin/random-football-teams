@@ -12,6 +12,43 @@ interface IProps {
 
 export default function GenerateButton({ data }: IProps) {
   const { ligueFilter, teamPowerFilter, setFilterResults } = useGlobalState();
+  const [result, setResult] = React.useState([]);
+
+  const selectTwoRandomTeams = (arr) => {
+    if (!arr || !arr.length) return;
+    // Eğer dizi içerisinde 2 ya da daha az öğe varsa, işlem yapmadan diziye geri dön
+    if (arr.length <= 2) return arr;
+
+    // Rastgele bir ilk öğe seçin
+    let firstItem = arr[Math.floor(Math.random() * arr.length)];
+
+    // İkinci öğe, seçilen ilk öğeden farklı olana kadar rastgele olarak seçilir
+    let secondItem = firstItem;
+    while (secondItem === firstItem) {
+      secondItem = arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    // İki seçilen öğeyi bir dizi içinde döndürün
+    return [firstItem, secondItem];
+  };
+
+  const generateRandomTeams = (filteredTeams) => {
+    if (!filteredTeams) return;
+
+    const interval = setInterval(() => {
+      const teams = selectTwoRandomTeams(filteredTeams);
+      setFilterResults(teams);
+
+      console.log({ teams });
+    }, 500);
+
+    console.log({ interval });
+
+    setTimeout(() => {
+      clearInterval(interval);
+      console.log("interval stopped");
+    }, 5000);
+  };
 
   const handleGenerateClick = () => {
     let teams = [];
@@ -57,7 +94,9 @@ export default function GenerateButton({ data }: IProps) {
       });
     });
 
-    setFilterResults(teams);
+    generateRandomTeams(teams);
+
+    setResult(teams);
   };
 
   return (

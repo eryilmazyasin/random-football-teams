@@ -1,23 +1,53 @@
-import React from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import Image from "next/image";
 import versusLogo from "../../public/versus.png";
 import classes from "./GeneratedTeamsResult.styles";
 import { useGlobalState } from "<src>/contexts/GlobalStateProvider";
+import GenerateButton from "./GenerateButton";
+import ILeague, { ITeams } from "<src>/interfaces/ILeague";
 
-export default function GeneratedTeamsResult() {
+interface IProps {
+  data: ILeague[];
+}
+
+export default function GeneratedTeamsResult(props: IProps) {
+  const { data } = props;
   const { filterResults } = useGlobalState();
 
-  console.log({ filterResults });
+  const renderTeamsElement = useMemo(() => {
+    if (!filterResults) return;
+
+    return (
+      <div className={classes.generateTeamsWrapper}>
+        <div className="logoAndName">
+          <div className="logo">
+            <img src={filterResults[0].team_logo} />
+          </div>
+          {filterResults[0].team_name}
+        </div>
+
+        <Image
+          src={versusLogo}
+          alt="Picture of the author"
+          className="versus"
+        />
+        <div className="logoAndName">
+          <div className="logo">
+            <img src={filterResults[1].team_logo} />
+          </div>
+          {filterResults[1].team_name}
+        </div>
+      </div>
+    );
+  }, [filterResults]);
 
   return (
-    <div className={classes.generateTeamsWrapper}>
+    <>
       <div>
-        <img src="https://upload.wikimedia.org/wikipedia/tr/5/52/FC.Porto.png" />
+        <GenerateButton data={data} />
       </div>
-      <Image src={versusLogo} alt="Picture of the author" className="versus" />
-      <div>
-        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/40/Boavista_F.C._logo.svg/1200px-Boavista_F.C._logo.svg.png" />
-      </div>
-    </div>
+
+      {renderTeamsElement}
+    </>
   );
 }
