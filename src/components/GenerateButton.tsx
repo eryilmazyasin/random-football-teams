@@ -65,7 +65,7 @@ export default function GenerateButton({ data }: IProps) {
       <Button
         variant="outlined"
         className={classes.generateButton}
-        endIcon={<SendIcon />}
+        // endIcon={<SendIcon />}
         onClick={handleGenerateClick}
       >
         Generate
