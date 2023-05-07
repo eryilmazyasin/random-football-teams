@@ -11,8 +11,12 @@ interface IProps {
 }
 
 export default function GenerateButton({ data }: IProps) {
-  const { ligueFilter, teamPowerFilter, setFilterResults } = useGlobalState();
-  const [result, setResult] = React.useState([]);
+  const {
+    ligueFilter,
+    teamPowerFilter,
+    setRandomTeams,
+    setIsRandomTeamsCalculated,
+  } = useGlobalState();
 
   const selectTwoRandomTeams = (arr) => {
     if (!arr || !arr.length) return;
@@ -37,16 +41,12 @@ export default function GenerateButton({ data }: IProps) {
 
     const interval = setInterval(() => {
       const teams = selectTwoRandomTeams(filteredTeams);
-      setFilterResults(teams);
-
-      console.log({ teams });
-    }, 500);
-
-    console.log({ interval });
+      setRandomTeams(teams);
+    }, 100);
 
     setTimeout(() => {
       clearInterval(interval);
-      console.log("interval stopped");
+      setIsRandomTeamsCalculated(true);
     }, 5000);
   };
 
@@ -55,6 +55,8 @@ export default function GenerateButton({ data }: IProps) {
     const teamPower: any = [teamPowerFilter];
     const teamPowerItem = teamPower[0]; // Dizinin ilk ve tek öğesi
     const [startPower, endPower] = teamPowerItem.split(" - "); // Dizeyi ayrıştırma
+
+    setIsRandomTeamsCalculated(false);
 
     data.map((league, index) => {
       const selectedLeaguesText = ligueFilter.join(",");
@@ -95,8 +97,6 @@ export default function GenerateButton({ data }: IProps) {
     });
 
     generateRandomTeams(teams);
-
-    setResult(teams);
   };
 
   return (

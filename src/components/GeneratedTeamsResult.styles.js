@@ -34,6 +34,7 @@ export default {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        transition: all ease 0.2s;
       }
     }
 
@@ -56,6 +57,12 @@ export default {
       ${down(Breakpoints.md)} {
         width: 60px;
         height: 90px;
+      }
+    }
+
+    &[data-is-calculated="true"] {
+      & .logo {
+        box-shadow: 0 0 20px 5px #234b81;
       }
     }
   `,

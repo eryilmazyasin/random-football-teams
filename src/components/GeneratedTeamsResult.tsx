@@ -12,18 +12,18 @@ interface IProps {
 
 export default function GeneratedTeamsResult(props: IProps) {
   const { data } = props;
-  const { filterResults } = useGlobalState();
+  const { randomTeams, isRandomTeamsCalculated } = useGlobalState();
 
   const renderTeamsElement = useMemo(() => {
-    if (!filterResults) return;
+    if (!randomTeams) return;
 
     return (
-      <div className={classes.generateTeamsWrapper}>
+      <div className={classes.generateTeamsWrapper} data-is-calculated={isRandomTeamsCalculated}>
         <div className="logoAndName">
           <div className="logo">
-            <img src={filterResults[0].team_logo} />
+            <img src={randomTeams[0].team_logo} alt={"homeTeamLogo"} />
           </div>
-          {filterResults[0].team_name}
+          {randomTeams[0].team_name}
         </div>
 
         <Image
@@ -33,15 +33,15 @@ export default function GeneratedTeamsResult(props: IProps) {
         />
         <div className="logoAndName">
           <div className="logo">
-            <img src={filterResults[1].team_logo} />
+            <img src={randomTeams[1].team_logo} alt={"awayTeamLogo"} />
           </div>
-          {filterResults[1].team_name}
+          {randomTeams[1].team_name}
         </div>
       </div>
     );
-  }, [filterResults]);
+  }, [randomTeams]);
 
-  //TODO:Performans sorunları, filterResults state ve değişken isimleri, ui görsel efekt iyileştirmeleri
+  //TODO:Performans sorunları, değişken isimleri, ui görsel efekt iyileştirmeleri
 
   return (
     <>

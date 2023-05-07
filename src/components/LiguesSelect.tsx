@@ -47,10 +47,6 @@ export default function LiguesSelect(props: IProps) {
     return ligues;
   };
 
-  // TODO: Çoklu seçim yapılabilmeli
-
-  console.log({ ligueFilter });
-
   return (
     <Box sx={{ minWidth: 300 }} className={classes.liguesSelectWrapper}>
       <FormControl fullWidth>

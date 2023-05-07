@@ -4,11 +4,14 @@ import React, { createContext, useState } from "react";
 interface IGlobalState {
   ligueFilter: ILeagues[];
   // setLigueFilter: React.Dispatch<React.SetStateAction<ILeagues[]>>;
-  setLigueFilter: any;
   teamPowerFilter: ITeamPower;
+  randomTeams: ITeams[];
+  isRandomTeamsCalculated: boolean;
+
+  setIsRandomTeamsCalculated: React.Dispatch<React.SetStateAction<boolean>>;
   setTeamPowerFilter: any;
-  setFilterResults: React.Dispatch<React.SetStateAction<ITeams[]>>;
-  filterResults: ITeams[];
+  setRandomTeams: React.Dispatch<React.SetStateAction<ITeams[]>>;
+  setLigueFilter: any;
 }
 
 const allFilter = "All";
@@ -19,17 +22,20 @@ const GlobalStateProvider = ({ children }) => {
   // const [ligueFilter, setLigueFilter] = useState<ILeagues>(allFilter);
   const [ligueFilter, setLigueFilter] = useState<ILeagues[]>([]);
   const [teamPowerFilter, setTeamPowerFilter] = useState<ITeamPower>(allFilter);
-  const [filterResults, setFilterResults] = useState<ITeams[]>(null);
+  const [randomTeams, setRandomTeams] = useState<ITeams[]>(null);
+  const [isRandomTeamsCalculated, setIsRandomTeamsCalculated] = useState(false);
 
   return (
     <GlobalState.Provider
       value={{
         ligueFilter,
         teamPowerFilter,
-        filterResults,
+        randomTeams,
+        isRandomTeamsCalculated,
+        setIsRandomTeamsCalculated,
         setLigueFilter,
         setTeamPowerFilter,
-        setFilterResults,
+        setRandomTeams,
       }}
     >
       {children}

@@ -14,8 +14,6 @@ import GenerateButton from "<src>/components/GenerateButton";
 import GeneratedTeamsResult from "<src>/components/GeneratedTeamsResult";
 
 export default function Home() {
-  console.log({ data });
-
   return (
     <>
       <Head>
