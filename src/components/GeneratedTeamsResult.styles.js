@@ -23,6 +23,11 @@ export default {
       max-width: 170px;
       max-height: 170px;
 
+      ${down(Breakpoints.md)} {
+        max-width: 130px;
+        max-height: 130px;
+      }
+
       & .logo {
         background: linear-gradient(45deg, #102f5a, transparent);
         border-radius: 50%;
@@ -35,6 +40,13 @@ export default {
         justify-content: center;
         align-items: center;
         transition: all ease 0.2s;
+
+        ${down(Breakpoints.md)} {
+          max-width: 130px;
+          max-height: 130px;
+          min-width: 130px;
+          min-height: 130px;
+        }
       }
     }
 
@@ -62,7 +74,7 @@ export default {
 
     &[data-is-calculated="true"] {
       & .logo {
-        box-shadow: 0 0 20px 5px #234b81;
+        box-shadow: 0 0 20px 5px #234b817d;
       }
     }
   `,

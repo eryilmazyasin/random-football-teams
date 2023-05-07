@@ -1,10 +1,11 @@
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import Image from "next/image";
 import versusLogo from "../../public/versus.png";
-import classes from "./GeneratedTeamsResult.styles";
 import { useGlobalState } from "<src>/contexts/GlobalStateProvider";
 import GenerateButton from "./GenerateButton";
-import ILeague, { ITeams } from "<src>/interfaces/ILeague";
+import ILeague from "<src>/interfaces/ILeague";
+
+import classes from "./GeneratedTeamsResult.styles";
 
 interface IProps {
   data: ILeague[];
@@ -18,10 +19,16 @@ export default function GeneratedTeamsResult(props: IProps) {
     if (!randomTeams) return;
 
     return (
-      <div className={classes.generateTeamsWrapper} data-is-calculated={isRandomTeamsCalculated}>
+      <div
+        className={classes.generateTeamsWrapper}
+        data-is-calculated={isRandomTeamsCalculated}
+      >
         <div className="logoAndName">
           <div className="logo">
-            <img src={randomTeams[0].team_logo} alt={"homeTeamLogo"} />
+            <img
+              src={randomTeams[0].team_logo}
+              alt={`${randomTeams[0].team_name}-homeTeamLogo`}
+            />
           </div>
           {randomTeams[0].team_name}
         </div>
@@ -33,7 +40,10 @@ export default function GeneratedTeamsResult(props: IProps) {
         />
         <div className="logoAndName">
           <div className="logo">
-            <img src={randomTeams[1].team_logo} alt={"awayTeamLogo"} />
+            <img
+              src={randomTeams[1].team_logo}
+              alt={`${randomTeams[1].team_name}-awayTeamLogo`}
+            />
           </div>
           {randomTeams[1].team_name}
         </div>

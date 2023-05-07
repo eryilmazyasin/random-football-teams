@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -7,6 +7,7 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 import ILeague from "<src>/interfaces/ILeague";
 import { useGlobalState } from "<src>/contexts/GlobalStateProvider";
 import { Chip, OutlinedInput } from "@mui/material";
+
 import classes from "./LiguesSelect.styles";
 
 interface IProps {

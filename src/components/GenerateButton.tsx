@@ -1,10 +1,12 @@
 import * as React from "react";
 import Button from "@mui/material/Button";
-import SendIcon from "@mui/icons-material/Send";
+import CircularProgress from "@mui/material/CircularProgress";
+
 import Stack from "@mui/material/Stack";
-import classes from "./GenerateButton.styles";
 import { useGlobalState } from "<src>/contexts/GlobalStateProvider";
-import ILeague, { ITeamPower } from "<src>/interfaces/ILeague";
+import ILeague from "<src>/interfaces/ILeague";
+
+import classes from "./GenerateButton.styles";
 
 interface IProps {
   data: ILeague[];
@@ -17,6 +19,8 @@ export default function GenerateButton({ data }: IProps) {
     setRandomTeams,
     setIsRandomTeamsCalculated,
   } = useGlobalState();
+
+  const [isCalculating, setIsCalculating] = React.useState(false);
 
   const selectTwoRandomTeams = (arr) => {
     if (!arr || !arr.length) return;
@@ -39,6 +43,8 @@ export default function GenerateButton({ data }: IProps) {
   const generateRandomTeams = (filteredTeams) => {
     if (!filteredTeams) return;
 
+    setIsCalculating(true);
+
     const interval = setInterval(() => {
       const teams = selectTwoRandomTeams(filteredTeams);
       setRandomTeams(teams);
@@ -47,6 +53,7 @@ export default function GenerateButton({ data }: IProps) {
     setTimeout(() => {
       clearInterval(interval);
       setIsRandomTeamsCalculated(true);
+      setIsCalculating(false);
     }, 5000);
   };
 
@@ -104,8 +111,14 @@ export default function GenerateButton({ data }: IProps) {
       <Button
         variant="outlined"
         className={classes.generateButton}
-        // endIcon={<SendIcon />}
+        endIcon={
+          isCalculating && (
+            <CircularProgress size={15} color="info" variant="indeterminate" />
+          )
+        }
         onClick={handleGenerateClick}
+        disabled={isCalculating}
+        disableTouchRipple={true}
       >
         Generate
       </Button>

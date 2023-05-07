@@ -18,13 +18,27 @@ export default {
 
     transition: 0.5s;
     background-size: 200% auto;
+    border: 1px solid #ffffff !important;
 
-    &:hover {
-      background-color: rgb(255 255 255 / 15%);
-      border: 1px solid #ffffff;
-      background-position: right center; /* change the direction of the change here */
-      text-decoration: none;
-      box-shadow: 0 0 10px #eee;
+    & .MuiButton-endIcon {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 35px;
+
+      & .MuiCircularProgress-root {
+        color: #adadad;
+      }
+    }
+
+    ${up(Breakpoints.md)} {
+      &:hover {
+        background-color: rgb(255 255 255 / 15%);
+        border: 1px solid #ffffff;
+        background-position: right center; /* change the direction of the change here */
+        text-decoration: none;
+        box-shadow: 0 0 10px #eee;
+      }
     }
   `,
 };

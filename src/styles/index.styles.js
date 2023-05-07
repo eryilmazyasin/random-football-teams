@@ -9,6 +9,12 @@ export default {
     & .app-title {
       font-weight: 300;
       margin: 25px 0;
+
+      font-size: 40px;
+
+      ${down(Breakpoints.md)} {
+        font-size: 30px;
+      }
     }
 
     & .selectBoxesWrapper {

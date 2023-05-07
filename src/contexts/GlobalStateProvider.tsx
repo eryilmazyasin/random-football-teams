@@ -1,5 +1,5 @@
-import { ILeagues, ITeamPower, ITeams } from "<src>/interfaces/ILeague";
 import React, { createContext, useState } from "react";
+import { ILeagues, ITeamPower, ITeams } from "<src>/interfaces/ILeague";
 
 interface IGlobalState {
   ligueFilter: ILeagues[];
