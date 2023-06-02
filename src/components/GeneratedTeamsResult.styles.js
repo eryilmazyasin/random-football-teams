@@ -78,4 +78,9 @@ export default {
       }
     }
   `,
+  noResult: css`
+    padding: 60px 0;
+    font-weight: 300;
+    font-size: 18px;
+  `,
 };

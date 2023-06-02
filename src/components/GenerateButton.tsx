@@ -16,8 +16,10 @@ export default function GenerateButton({ data }: IProps) {
   const {
     ligueFilter,
     teamPowerFilter,
+    noResult,
     setRandomTeams,
     setIsRandomTeamsCalculated,
+    setNoResult,
   } = useGlobalState();
 
   const [isCalculating, setIsCalculating] = React.useState(false);
@@ -103,7 +105,16 @@ export default function GenerateButton({ data }: IProps) {
       });
     });
 
-    generateRandomTeams(teams);
+    if (teams.length <= 1) {
+      setIsCalculating(true);
+      setTimeout(() => {
+        setIsCalculating(false);
+        setNoResult(true);
+      }, 500);
+    } else {
+      if (noResult) setNoResult(false);
+      generateRandomTeams(teams);
+    }
   };
 
   return (

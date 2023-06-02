@@ -13,9 +13,12 @@ interface IProps {
 
 export default function GeneratedTeamsResult(props: IProps) {
   const { data } = props;
-  const { randomTeams, isRandomTeamsCalculated } = useGlobalState();
+  const { randomTeams, isRandomTeamsCalculated, noResult } = useGlobalState();
 
   const renderTeamsElement = useMemo(() => {
+    if (noResult)
+      return <div className={classes.noResult}>No result found</div>;
+
     if (!randomTeams) return;
 
     return (
@@ -49,7 +52,7 @@ export default function GeneratedTeamsResult(props: IProps) {
         </div>
       </div>
     );
-  }, [randomTeams]);
+  }, [randomTeams, isRandomTeamsCalculated, noResult]);
 
   //TODO:Performans sorunları, değişken isimleri, ui görsel efekt iyileştirmeleri
 

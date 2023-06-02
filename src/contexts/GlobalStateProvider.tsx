@@ -12,6 +12,8 @@ interface IGlobalState {
   setTeamPowerFilter: any;
   setRandomTeams: React.Dispatch<React.SetStateAction<ITeams[]>>;
   setLigueFilter: any;
+  noResult: boolean;
+  setNoResult: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const allFilter = "All";
@@ -24,6 +26,7 @@ const GlobalStateProvider = ({ children }) => {
   const [teamPowerFilter, setTeamPowerFilter] = useState<ITeamPower>(allFilter);
   const [randomTeams, setRandomTeams] = useState<ITeams[]>(null);
   const [isRandomTeamsCalculated, setIsRandomTeamsCalculated] = useState(false);
+  const [noResult, setNoResult] = useState(false);
 
   return (
     <GlobalState.Provider
@@ -32,10 +35,12 @@ const GlobalStateProvider = ({ children }) => {
         teamPowerFilter,
         randomTeams,
         isRandomTeamsCalculated,
+        noResult,
         setIsRandomTeamsCalculated,
         setLigueFilter,
         setTeamPowerFilter,
         setRandomTeams,
+        setNoResult,
       }}
     >
       {children}
