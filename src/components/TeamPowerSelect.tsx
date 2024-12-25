@@ -28,6 +28,7 @@ export default function TeamPowerSelect(props: IProps) {
       "50 - 70",
       "70 - 80",
       "80 - 100",
+      "90 - 100",
     ];
 
     return powers.map((power) => (
