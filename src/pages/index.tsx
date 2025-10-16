@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Random Football Teams</title>
+        <title>Random Football Teams v2</title>
         <meta name="description" content="Random Football Teams is a user-friendly application designed to generate two random football teams based on league and strength preferences. Perfect for friends playing PlayStation, this system provides an exciting and unbiased way to assign teams for an enjoyable gaming experience." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
